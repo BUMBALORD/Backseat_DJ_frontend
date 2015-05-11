@@ -14,7 +14,8 @@ $(document).ready(function() {
         }).done(function(response){
           for(var i=0;i<response.playlist.length;i++){
 
-          $('.nonajax').append("<p>"+response.playlist[i].title+"</p>");
+          // $('.nonajax').append("<p>"+response.playlist[i].title+"</p>");
+          $('.current').append("<p>"+response.playlist[i].title+"</p>");
           };
         })
 
@@ -112,9 +113,13 @@ $(document).ready(function() {
       var song = $(this)
       var track = song.attr('href')
       var track_name = song.text();
+      // var abc = $('.play_songs').attr('action').length
+      // var bac = window.location.pathname.length
+      // var xyz = (window.location.pathname.charAt(bac - 2) + window.location.pathname.charAt(bac - 1))
       var abc = $('.play_songs').attr('action').length
-      var bac = window.location.pathname.length
-      var xyz = (window.location.pathname.charAt(bac - 2) + window.location.pathname.charAt(bac - 1))
+      var bac = window.location.pathname
+      var playlid = /[^/]*$/.exec(bac)[0]
+      var userid = bac.match('/.*/(.*)/.*/')[1]
 
         $.ajax({
           url: song.parent().parent().parent().find('.search_bar').attr('action'),
@@ -122,10 +127,9 @@ $(document).ready(function() {
           dataType: 'json',
           data: {track_id: track,
                   title: track_name,
-                  playlist_id: xyz,
-                  user_id: $('.play_songs').attr('action').charAt(abc -1) }
+                  playlist_id: playlid,
+                  user_id: userid }
         }).done(function(response) {
-
           $('.current').append("<p>" + response.title + "</p>")
         })
       })
