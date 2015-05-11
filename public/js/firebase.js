@@ -1,30 +1,30 @@
 
 $(document).ready(function() {
 
-  var skipVotes = new Firebase("https://backseatdj.firebaseIO.com/skipVotes");
+  var upSkipVotes = new Firebase("https://backseatdj.firebaseIO.com/upSkipVotes");
 
-  $("#skip").one("click", function(event){
-    skipVotes.transaction(function (current_value) {
+  $("#up-skip").one("click", function(event){
+    upSkipVotes.transaction(function (current_value) {
       return (current_value + 1);
     })
   })
 
+  var downSkipVotes = new Firebase("https://backseatdj.firebaseIO.com/downSkipVotes");
 
-
-  var replayVotes = new Firebase("https://backseatdj.firebaseIO.com/replayVotes");
-
-  $("#replay").one("click", function(event){
-    replayVotes.transaction(function (current_value) {
+  $("#down-skip").one("click", function(event){
+    downSkipVotes.transaction(function (current_value) {
       return (current_value + 1);
     })
   })
 
+  // var replayVotes = new Firebase("https://backseatdj.firebaseIO.com/replayVotes");
 
-  // skipVotes.on("value", function(snapshot) {
-  //   var newPlaylist = snapshot.val();
-  //   console.log(newPlaylist.skipVotes);
-  //   // console.log("Genre: " + newPlaylist.genre);
+  // $("#replay").one("click", function(event){
+  //   replayVotes.transaction(function (current_value) {
+  //     return (current_value + 1);
+  //   })
   // })
+
 
 
 
