@@ -1,35 +1,30 @@
-// function mainMouseDownOne() {
-//     $(".main").one('mousedown', '.resizeBar', function (e) { /* my code */ });
-// }
-
-// $(document).ready(function(){
-//     mainMouseDownOne();
-
-//     .ajax({
-//         ...
-//         success: function() {
-//             ...
-//             mainMouseDownOne();
-//         }
-//     })
-// });
-
 
 $(document).ready(function() {
+
+  var counter = new Firebase("https://backseatdj.firebaseIO.com/votes/counter");
+  counter.set(1)
+  counter.on("value", function(snapshot) {
+    console.log(snapshot.val());
+    currentCount = snapshot.val()
+  })
 
 // Up Vote! //
 
   var upSkipVotes = new Firebase("https://backseatdj.firebaseIO.com/votes/upSkipVotes");
 
-  var upVote = function() {
-    $("#up-skip").one("click", function(event){
-      upSkipVotes.transaction(function (current_value) {
-        return (current_value + 1);
-      })
+  // var upVote = function() {
+    $("#up-skip").on("click", function(event){
+      if(currentCount === 1){
+        upSkipVotes.transaction(function (current_value) {
+          return (current_value + 1);
+        })
+      }
+      // counter.set(0)
+      // $("#down-skip").hide()
     })
-  }
+  // }
 
-  upVote();
+  // upVote();
 
   upSkipVotes.on("value", function(snapshot) {
     console.log(snapshot.val());
@@ -40,15 +35,19 @@ $(document).ready(function() {
 
   var downSkipVotes = new Firebase("https://backseatdj.firebaseIO.com/votes/downSkipVotes");
 
-  var downVote = function() {
-    $("#down-skip").one("click", function(event){
-      downSkipVotes.transaction(function (current_value) {
-        return (current_value + 1);
-      })
+  // var downVote = function() {
+    $("#down-skip").on("click", function(event){
+      if (currentCount === 1){
+        downSkipVotes.transaction(function (current_value) {
+          return (current_value + 1);
+        })
+      }
+      // counter.set(0)
+      // $("#up-skip").hide()
     })
-  }
+  // }
 
-  downVote();
+  // downVote();
 
   downSkipVotes.on("value", function(snapshot) {
     console.log(snapshot.val());
@@ -74,11 +73,13 @@ $(document).ready(function() {
         } else if (upVotes === downVotes){
           //trigger random song
         }
-
+        // $("#up-skip").show()
+        // $("#down-skip").show()
         downSkipVotes.set(0)
         upSkipVotes.set(0)
-        upVote();
-        downVote();
+        // counter.set(1)
+        // upVote();
+        // downVote();
       }
 
     })
