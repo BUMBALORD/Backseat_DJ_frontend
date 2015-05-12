@@ -37,49 +37,57 @@ $(document).ready(function() {
         });
 
 
+  /////////////////////////////////   NO LONGER NEED THIS AJAX FOR PLAYLIST INDEX  ////////////////////////////////////////
+  // $('.playlist-create').on('submit', function(event){
+  //   event.preventDefault()
+  //   var poo = "http://localhost:3000" + window.location.pathname
+  //   $.ajax({
+  //     url: poo,
+  //     method: 'post',
+  //     dataType: 'json',
+  //     data: $(this).serialize()
+  //   })
+  //   .done(function(response){
+  //   console.log("yes")
 
-  $('.playlist-create').on('submit', function(event){
-    event.preventDefault()
-    var poo = "http://localhost:3000" + window.location.pathname
-    $.ajax({
-      url: poo,
-      method: 'post',
-      dataType: 'json',
-      data: $(this).serialize()
-    })
-    .done(function(response){
-    console.log("yes")
+  //   var car = $('.testes').last().clone()
+  //   var bar = $(car).html("<a href=/users/"+ response.user_id+ "/playlists/" +response.id +">Name: " + response.name + ", Genre: " + response.genre+ "</a>")
 
-    var car = $('.testes').last().clone()
-    var bar = $(car).html("<a href=/users/"+ response.user_id+ "/playlists/" +response.id +">Name: " + response.name + ", Genre: " + response.genre+ "</a>")
+  //   $('.testes').last().append(bar)
+  //   })
 
-    $('.testes').last().append(bar)
-    })
-
-  })
+  // })
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
 
   // $('.current').on("click", function(event){
   //     event.preventDefault();
 
   // });
 
-  $('.playlist-index').ready(function(){
-    var poo = "http://localhost:3000" + window.location.pathname
-    $.ajax({
-      url: poo,
-      method: "get",
-      dataType: 'json',
-      // data: $(this).serialize()
-    })
-    .done(function(response){
-      $('h1').text( response.user.user_name + "'s Playlist ")
-      for (var i = 0; i < response.data.length; i++) {
-      var car = $('.testes').last().clone();
-      var bar = $(car).html("<a href=/users/"+ response.data[i].user_id+ "/playlists/" +response.data[i].id +">Name: " + response.data[i].name + ", Genre: " + response.data[i].genre+ "</a>")
-      $('.testes').last().append(bar)
-    }
-    })
-  })
+
+/////////////////////////////////   NO LONGER NEED THIS AJAX FOR PLAYLIST INDEX  ////////////////////////////////////////
+  // $('.playlist-index').ready(function(){
+  //   var poo = "http://localhost:3000" + window.location.pathname
+  //   $.ajax({
+  //     url: poo,
+  //     method: "get",
+  //     dataType: 'json',
+  //     // data: $(this).serialize()
+  //   })
+  //   .done(function(response){
+  //     $('h1').text( response.user.user_name + "'s Playlist ")
+  //     for (var i = 0; i < response.data.length; i++) {
+  //     var car = $('.testes').last().clone();
+  //     var bar = $(car).html("<a href=/users/"+ response.data[i].user_id+ "/playlists/" +response.data[i].id +">Name: " + response.data[i].name + ", Genre: " + response.data[i].genre+ "</a>")
+  //     $('.testes').last().append(bar)
+  //   }
+  //   })
+  // })
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+  
+
 
 
   // $('#new-user').on('submit', function(event){
