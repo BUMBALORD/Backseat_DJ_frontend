@@ -5,14 +5,27 @@
             </header>
 </div>
 
+<!--
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head">Backseat DJ</h1>
+        <p class="splash-subhead">
+            Create A New Backseat DJ User
+        </p>
+          <form action="/users" method="post" id="new-user" class="cent">
+            <input type="text" name="user_name" placeholder="username">
+            <input type="password" name="password" placeholder="password">
 
+ -->
 
     <div class="main-container back_img debug">
             <div class="main wrapper clearfix debug">
-                <p class="font2 fontx2"> Create A New Backseat DJ Account!</p>
+                <p class="font2 fontx2 cent"> Create A New Backseat DJ Account!</p>
               <form action="http://localhost:3000/users" method="post" id="new-user" class="cent font2">
                 <p><input type="text" name="user_name" placeholder="username"></p>
-+                <p><input type="password" name="password" placeholder="password"  pattern=".{5,10}" required title="5 to 10 characters"></p>
+
+                <p><input type="password" name="password" placeholder="password"  pattern=".{5,10}" required title="5 to 10 characters"></p>
+
                 <p><input type="submit" value="Create"></p>
               </form>
             </div>
