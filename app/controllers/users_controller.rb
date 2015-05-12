@@ -7,8 +7,10 @@ end
 
 post '/users' do
 
+
   p params
   p params["user_name"]
+
   HTTParty.post("http://localhost:3000/users", body: {user_name: params["user_name"], password: params["password"]})
 
   redirect "/"
