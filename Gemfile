@@ -8,6 +8,7 @@ gem 'pg'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'httparty'
+gem 'firebase'
 gem 'activesupport', '~>4.2.0'
 gem 'activerecord', '~>4.2.0'
 
