@@ -61,23 +61,23 @@ $(document).ready(function() {
   //   console.log("yes")
 
 
-  $('.playlist-create').on('submit', function(event){
-    event.preventDefault()
-    var poo = "http://localhost:3000" + window.location.pathname
-    $.ajax({
-      url: poo,
-      method: 'post',
-      dataType: 'json',
-      data: $(this).serialize()
-    })
-    .done(function(response){
-      console.log("yes")
+  // $('.playlist-create').on('submit', function(event){
+  //   event.preventDefault()
+  //   var poo = "http://localhost:3000" + window.location.pathname
+  //   $.ajax({
+  //     url: poo,
+  //     method: 'post',
+  //     dataType: 'json',
+  //     data: $(this).serialize()
+  //   })
+  //   .done(function(response){
+  //     console.log("yes")
 
-      var car = $('.testes').last().clone()
-      var bar = $(car).html("<a href=/users/"+ response.user_id+ "/playlists/" +response.id +">Name: " + response.name + ", Genre: " + response.genre+ "</a>")
+    //   var car = $('.testes').last().clone()
+    //   var bar = $(car).html("<a href=/users/"+ response.user_id+ "/playlists/" +response.id +">Name: " + response.name + ", Genre: " + response.genre+ "</a>")
 
-      $('.testes').last().append(bar)
-    })
+    //   $('.testes').last().append(bar)
+    // })
 
   //   var car = $('.testes').last().clone()
   //   var bar = $(car).html("<a href=/users/"+ response.user_id+ "/playlists/" +response.id +">Name: " + response.name + ", Genre: " + response.genre+ "</a>")
