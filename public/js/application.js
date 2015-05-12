@@ -7,34 +7,9 @@ SC.initialize({
    // });
 $(document).ready(function() {
 
-  $('#new-user').on('submit',function(event){
-    debugger
-    event.preventDefault();
-    $.ajax({
-    url: $(this).attr('action'),
-    method: "post",
-    data: $(this).serialize(),
-  })
-    .done(function(response){
-      console.log("yes")
-      debugger
-    })
-    .fail(function(response){
-      console.log("fail")
-    })
-  })
 
-  $.ajax({
-    url: "http://localhost:3000" + window.location.pathname + "/edit",
-    method: "GET",
-    dataType: 'json'
-  }).done(function(response){
-    for(var i=0;i<response.playlist.length;i++){
 
-      $('.nonajax').append("<p>"+response.playlist[i].title+"</p>");
-    };
-  })
-
+  // $
 
 
 
