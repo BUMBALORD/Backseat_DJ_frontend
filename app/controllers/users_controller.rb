@@ -1,11 +1,13 @@
+enable :sessions
 get '/' do
+  p $session
   erb :"users/index"
 end
 
 post '/users' do
   p params
   p params["user_name"]
-  HTTParty.post("http://localhost:3000/users", body: {user_name: params["user_name"], password: params["password"]})
+  HTTParty.get("http://localhost:3000/users", body: {user_name: params["user_name"], password: params["password"]})
   redirect "/"
 end
 
@@ -22,10 +24,15 @@ get '/users/new' do
   erb :"users/new"
 end
 
+get '/users/session' do
+  p params
+  response = HTTParty.get("http://localhost:3000/session", body: {user_name: params["username"]}).parsed_response
+  p response
+  session[:user_id] = response["id"]
+  p session[:user_id]
+redirect "http://localhost:3000"
+end
 
-
-# get '/users/:user_id/playlists' do
-#   p params
-#   @user = params[:user_id]
-#   erb :"playlists/new"
-# end
+get'/users/redirect' do
+  redirect "/users/#{session[:user_id]}/playlists"
+end

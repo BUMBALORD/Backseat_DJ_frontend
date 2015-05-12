@@ -6,6 +6,7 @@ require 'httparty'
 # end
 
 get '/users/:user_id/playlists' do
+  # p session[:user_id]
   @test = params[:user_id]
   erb :"playlists/index"
 end
