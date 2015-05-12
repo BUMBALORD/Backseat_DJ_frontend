@@ -12,7 +12,7 @@
         <p class="splash-subhead">
             A fun collaborative playlist maker with friends...
         </p>
-          <form action="http://localhost:3000/" method="get" class="cent" id="login-user">
+          <form action="/users/session" method="get" class="cent" id="login-user">
             <input type="text" name="username" placeholder="username">
             <input type="password" name="password" placeholder="password">
             <input type="submit" name="login" value="Login">
@@ -23,12 +23,12 @@
 
     <div class="main-container back_img debug">
             <div class="main wrapper clearfix debug">
-              <form action="http://localhost:3000/" method="get" class="cent font2 debug">
+              <form action="http://localhost:3000/" method="get" class="cent font2 cent debug">
                     <p><input type="text" name="username" placeholder="username"></p>
                     <p><input type="password" name="password" placeholder="password"></p>
                     <p><input type="submit" name="login" value="Login"></p>
                  </form>
-                 <a href="/users/new" class="cent font2 fontx2 debug">Create A New Account</a>
+                 <a href="/users/new" class="font2 fontx2 debug cent">Create A New Account</a>
             </div>
 
             <div class="info">
