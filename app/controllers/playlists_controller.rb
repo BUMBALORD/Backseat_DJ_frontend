@@ -11,6 +11,14 @@ get '/users/:user_id/playlists' do
   erb :"playlists/index"
 end
 
+post '/users/:user_id/playlists' do
+  response = HTTParty.post("http://localhost:3000/users/#{params[:user_id]}/playlists", body: {name: params[:name], genre: params[:genre]}).parsed_response["id"]
+
+#  FYI Cannot use instance variable for http party response
+
+   redirect "/users/#{params[:user_id]}/playlists/#{response.to_s}"
+end 
+
 
 get '/users/:user_id/playlists/:id' do
   @playlist_id = params[:id]
