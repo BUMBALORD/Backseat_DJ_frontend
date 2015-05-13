@@ -126,6 +126,7 @@ nav a:hover {
 
 .main {
     padding: 30px 0;
+    height:100vh;
 }
 
 .main article h1 {
@@ -142,6 +143,23 @@ nav a:hover {
     padding: 20px 0;
 }
 
+.footer-container {
+    position: fixed;
+    bottom: 0px;
+    left:0px;
+    width:100%;
+    background: #666699;
+}
+
+/*.main {
+    height: 100%;
+}
+*/
+/*.main-container {
+    height: 100%;
+}
+*/
+.main
 /* ===============
     ALL: IE Fixes
    =============== */
