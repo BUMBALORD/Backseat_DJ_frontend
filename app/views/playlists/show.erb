@@ -1,4 +1,3 @@
-
 <object height="81" width="100%" id="yourPlayerId" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
   <param name="movie" value="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2Fmatas%2Fhobnotropic&enable_api=true&object_id=yourPlayerId"></param>
   <param name="allowscriptaccess" value="always"></param>
@@ -8,21 +7,16 @@
 
 <input type="submit" value="PLAY IT MOTHA FUCKA" class="macdre">
 
-<script>
-
-</script>
-
-
 <form class="search_bar" action="http://localhost:3000/songs" method="GET">
   <input type="text" name="search" placeholder= "Search artist or title">
   <input type="submit">
 </form>
 
-<form class="play_songs" action="http://localhost:3000/users/<%=@user%>/playlists/<%=@playlist_id%>" method="GET">
-<input type="submit">
+<form class="play_songs" action="http://localhost:9393/users/<%=@user%>/playlists" method="GET">
+<input type="submit" value="Done">
 </form>
 
-<div class="current" style="float:right; margin:20px">Current Playlist
+<div class="current" style="float:right; margin:20px"><a href="/users/<%= @user %>/playlists/<%= @playlist_id %>/play">Play Playlist</a>
 
   <p></p>
 </div>
@@ -31,3 +25,10 @@
 <div class="nonajax"> </div>
 
 
+<div class="music-player">
+    <h4 class="trackTitle">Current track</h4>
+    <a href="#" id="play">Play</a>
+    <a href="#" id="pause" style="display:none;">Pause</a>
+    <a href="#" id="stop">Stop</a>
+    <a href="#" id="next">Next</a>
+</div>
