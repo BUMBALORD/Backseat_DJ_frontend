@@ -163,8 +163,10 @@ $(document).ready(function() {
       dataType: 'json'
     }).done(function(response){
       for(var i=0; i<response.length; i++){
-        $('.playlist').append( "<p class='songs'><a href=" + response[i].id + ">" +  response[i].title + "</a></p>")
-        } // for loop
+        // $('.playlist').append( "<p class='songs' ><a href=" + response[i].id + ">" +  response[i].title + "</a></p>")
+        // } // for loop
+
+        $('.playlist').append( "<p class='songs' id=" + response[i].stream_url + "><a href=" + response[i].id + ">" +  response[i].title + "</a></p>")}
 
     $('.songs a').on("click", function(event){
       event.preventDefault();
@@ -178,6 +180,7 @@ $(document).ready(function() {
       var bac = window.location.pathname
       var playlid = /[^/]*$/.exec(bac)[0]
       var userid = bac.match('/.*/(.*)/.*/')[1]
+      var stream_url = "https://api.soundcloud.com/tracks/"+track+"/stream"
 
         $.ajax({
           url: song.parent().parent().parent().find('.search_bar').attr('action'),
@@ -186,6 +189,7 @@ $(document).ready(function() {
           data: {track_id: track,
                   title: track_name,
                   playlist_id: playlid,
+                  song_url: stream_url,
                   user_id: userid }
         }).done(function(response) {
           $('.current').append("<p>" + response.title + "</p>")
