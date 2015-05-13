@@ -11,6 +11,7 @@ $(document).ready(function(){
 
   Track = function (trackId){
     var currentTrack = "";
+
     SC.initialize({
         client_id: 'db17be73cc8a86e63b53a69839d67352'
     });
@@ -63,7 +64,6 @@ $(document).ready(function(){
 
         this.nextTrack = function () {
           var currentIndex = tracks.indexOf(currentTrack);
-
           var nextTrackIndex = currentIndex + 1;
           if (nextTrackIndex === $('.playlist').children().length){
             playlistlength = $('.playlist').children().length
