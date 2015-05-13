@@ -1,32 +1,5 @@
 
 
-<div class="music-player" style="float:right">
-    <h4 class="trackTitle">Current track</h4>
-    <a href="#" id="play">Play</a>
-    <a href="#" id="pause" style="display:none;">Pause</a>
-    <a href="#" id="stop">Stop</a>
-    <a href="#" id="next">Next</a>
-</div>
-<input id="playzz" type="submit">
-
-<div class="playlist" style="display:none">
-  <% @rep.each_with_index do |rep ,i| %>
-  <div class=<%=i%>>
-  <div class='playlistid'>id=<%=rep["playlist_id"]%></div>
-  <div class="songurl"><%=rep["song_url"]%></div>
-  <div class="trackid"><%=rep["track_id"]%></div>
-  <div class="songlist"><%=rep["title"]%></div>
-
-
-  </div>
-  <% end %>
-</div>
-
-  <% @rep.each_with_index do |rep ,i| %>
-  <div class="nothere">
-    <a href="/songs/<%= rep["id"] %>"><%= rep["title"] %></a>
-  </div>
-  <%end%>
 
 
 
@@ -43,18 +16,36 @@
     <div class="main-container back_img debug">
             <div class="main wrapper clearfix debug">
               <div class="playlist">
-                <% @rep.each do |rep| %>
-                <div class="songlist font2 cent">
-                <p class="animate fontx2"><a href="/songs/<%= rep["id"] %>"><%= rep["title"] %></a></p>
-                <% end %>
+                <div class="music-player" style="float:right">
+                  <h4 class="trackTitle">Current track</h4>
+                  <button id="play">Play</button>
+                  <button id="pause" style="display:none;">Pause</button>
+                  <button id="stop">Stop</button>
+                  <button id="next">Next</button>
                 </div>
+                  <!-- <input id="playzz" type="submit"> -->
 
-                </div>
-            </div>
+                    <div class="playlist" style="display:none">
+                       <% @rep.each_with_index do |rep ,i| %>
+                       <div class=<%=i%>>
+                         <div class='playlistid'>id=<%=rep["playlist_id"]%></div>
+                         <div class="songurl"><%=rep["song_url"]%></div>
+                         <div class="trackid"><%=rep["track_id"]%></div>
+                         <div class="songlist"><%=rep["title"]%></div>
+                       </div>
+                       <% end %>
+                    </div>
+                    <div class="info">
+                      <% @rep.each_with_index do |rep ,i| %>
+                        <div class="nothere">
+                          <p class="font2 fontxmid opac cent"><a href="/songs/<%= rep["id"] %>"><%= rep["title"] %></a><p>
+                        </div>
+                      <%end%>
+                    </div>
 
-            <div class="info">
 
-            </div>
+
+
     </div>
 
     <div class="footer-container debug">
