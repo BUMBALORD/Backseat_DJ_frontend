@@ -37,6 +37,7 @@ get '/users/:user_id/playlists/:id/play' do
   response = HTTParty.get("http://localhost:3000/users/#{userid}/playlists/#{listid}/play").parsed_response
   @rep = response
   p @rep
+  p "*" * 80
   erb :"playlists/play"
 end
 

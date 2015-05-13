@@ -31,10 +31,11 @@ $(document).ready(function() {
 
 
     $('.songs a').on("click", function(event){
-      debugger
       event.preventDefault();
+      debugger
       var song = $(this)
       var track = song.attr('href')
+      var artwork_url = song.attr('class')
       var track_name = song.text();
       var abc = $('.play_songs').attr('action').length
       var bac = window.location.pathname
