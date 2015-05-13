@@ -6,7 +6,8 @@ $(document).ready(function() {
     dataType: 'json'
   }).done(function(response){
     for(var i=0;i<response.playlist.length;i++){
-    $('.current').append("<p id="+ response.playlist[i].track_id + ">"+response.playlist[i].title+"</p>");
+    // $('.current').append("<p id="+ response.playlist[i].track_id +">"+response.playlist[i].title+"</p>");
+    $('.current').append("<p id="+ response.playlist[i].track_id + " class="+response.playlist[i].artwork_url+">"+response.playlist[i].title+"</p>");
     };
   })
 
@@ -22,12 +23,15 @@ $(document).ready(function() {
       dataType: 'json'
     }).done(function(response){
       for(var i=0; i<response.length; i++){
-        $('.playlist').append( "<p class='songs' id=" + response[i].stream_url + "><a href=" + response[i].id + ">" +  response[i].title + "</a></p>")
+        console.log(response[i].artwork_url)
+        // $('.playlist').append( "<p class='songs' id=" + response[i].stream_url + "><a href=" + response[i].id + ">" +  response[i].title + "</a></p>")
+        $('.playlist').append( "<p class='songs' id=" + response[i].stream_url + "><a class="+response[i].artwork_url+" href=" + response[i].id + ">" +  response[i].title + "</a></p>")
       }
 
 
 
     $('.songs a').on("click", function(event){
+      debugger
       event.preventDefault();
       var song = $(this)
       var track = song.attr('href')
@@ -44,6 +48,7 @@ $(document).ready(function() {
           data: {track_id: track,
                   title: track_name,
                   playlist_id: playlid,
+                  artwork_url: artwork_url,
                   song_url: stream_url,
                   user_id: userid }
         }).done(function(response) {
