@@ -15,7 +15,7 @@
             <div class="main wrapper clearfix debug">
               <h1 class="playlist-index font1 cent"> <%= @current_user["user_name"] %>'s Playlist</h1>
               <% @playlists.each do |playlist| %>
-              <p class="font2 fontx2 cent"><a href="http://localhost:9393/users/<%= @user %>/playlists/<%= playlist["id"] %>"><%= playlist["name"] %></a></p>
+              <p class="font2 fontx2 cent"><a href="http://localhost:9393/users/<%= @user %>/playlists/<%= playlist["id"] %>/play"><%= playlist["name"] %></a></p>
               <%end%>
             </div>
 

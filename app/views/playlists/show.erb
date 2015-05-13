@@ -7,21 +7,16 @@
 
 <input type="submit" value="PLAY IT MOTHA FUCKA" class="macdre">
 
-<script>
-
-</script>
-
-
 <form class="search_bar" action="http://localhost:3000/songs" method="GET">
   <input type="text" name="search" placeholder= "Search artist or title">
   <input type="submit">
 </form>
 
-<form class="play_songs" action="http://localhost:3000/users/<%=@user%>/playlists/<%=@playlist_id%>" method="GET">
-<input type="submit">
+<form class="play_songs" action="http://localhost:9393/users/<%=@user%>/playlists" method="GET">
+<input type="submit" value="Done">
 </form>
 
-<div class="current" style="float:right; margin:20px">Current Playlist
+<div class="current" style="float:right; margin:20px"><a href="/users/<%= @user %>/playlists/<%= @playlist_id %>/play">Play Playlist</a>
 
   <p></p>
 </div>
