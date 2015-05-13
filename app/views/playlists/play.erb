@@ -1,16 +1,16 @@
-<div class="header-container debug">
+    <div class="header-container debug">
             <header class="wrapper clearfix debug">
                 <!-- <h1 class="title font1">Backseat DJ</h1> -->
                 <img src="http://i.imgur.com/hsMeLzq.png" width="320">
             </header>
-</div>
+    </div>
 
-<div class="main-container back_img debug">
+    <div class="main-container back_img debug">
             <div class="main wrapper clearfix debug">
               <div class="playlist">
                 <% @rep.each do |rep| %>
                 <div class="songlist font2 cent">
-                <p class="fontx2"><a href="/songs/<%= rep["id"] %>"><%= rep["title"] %></a></p>
+                <p class="animate fontx2"><a href="/songs/<%= rep["id"] %>"><%= rep["title"] %></a></p>
                 <% end %>
                 </div>
 
@@ -26,3 +26,4 @@
             <footer class="wrapper debug">
 
             </footer>
+    </div>
