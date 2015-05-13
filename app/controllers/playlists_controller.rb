@@ -32,7 +32,11 @@ get '/users/:user_id/playlists/:id' do
 end
 
 get '/users/:user_id/playlists/:id/play' do
-
+  userid = params[:user_id].to_i
+  listid = params[:id].to_i
+  response = HTTParty.get("http://localhost:3000/users/#{userid}/playlists/#{listid}/play").parsed_response
+  @rep = response
+  p @rep
   erb :"playlists/play"
 end
 

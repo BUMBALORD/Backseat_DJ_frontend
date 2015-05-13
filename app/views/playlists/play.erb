@@ -1,2 +1,9 @@
+<div class="playlist">
+  <% @rep.each do |rep| %>
+  <div class="songlist">
+  <a href="/songs/<%= rep["id"] %>"><%= rep["title"] %></a>
+  <% end %>
+  </div>
 
-This view needs stuff
+</div>
+
