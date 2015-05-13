@@ -79,17 +79,57 @@
 //       })
 
 
+
+
 $(document).ready(function() {
-  debugger
   Track = function (trackId){
         var currentTrack = "";
         SC.initialize({
             client_id: 'db17be73cc8a86e63b53a69839d67352'
         });
 
+
+  // var soundArray=songs
+  //     SC.stream("http://api.soundcloud.com/tracks/" + songs[Math.random()*songs.length].soundcloud_id, {onfinish:
+  //             function(sound){
+  //               var index = soundArray.indexOf(sound);
+  //               if (soundArray[index + 1] !== undefined) {
+  //                     chain(soundArray[index + 1]);
+  //               }
+  //             }} )
+
+        ///////////////////
+      // linkt = songs[Math.random() * songs.length]
+       // var sound = SC.stream("/tracks/"+linkt,
+       //  function(soundy){
+       //    sound.play();
+       //  })
+       // }
+
+       //  function repeat(){
+       //    var repeatSong=function(){
+       //      this.play({onfinish:repeat});
+       //  }
+
+       //  var sound = SC.stream("/tracks/293", function(sound){sound.play({onfinish:repeatSong})
+       //  })
+       //  }
+       ///////////////////
         // SC.stream("http://api.soundcloud.com/tracks/" + trackId,
         //   {onfinish: function(){  }}
         //   , function(sound){currentTrack = sound;})
+
+
+  // soundArray=songs
+  // SC.stream("http://api.soundcloud.com/tracks/"+trackId,
+  //       {onfinish: function () {
+  //       var index = soundArray.indexOf(sound);
+  //       if (soundArray[index + 1] !== undefined) {
+  //           chain(soundArray[index + 1]);
+  //       }}}, function(sound){currentTrack=sound});
+
+
+
         SC.stream("http://api.soundcloud.com/tracks/" + trackId, {onfinish: function(){
             currentPlayingTrack.stop();
             currentTrack = rotation.nextTrack();
@@ -108,15 +148,35 @@ $(document).ready(function() {
 
         this.play = function() {
             // currentTrack.play();
-            currentTrack.play({
-              // onload: function() {
-              //   if (this.readyState == 2) {
-              //     console.log('fuck')
-              //   }
 
-              // }
+            currentTrack.play({
+              onfinish: function(){
+                $('.trackTitle').html(currentTrack.title);
+                currentTrack = rotation.nextTrack()
+                currentPlayingTrack = new Track(currentTrack.soundcloud_id)
+                currentPlayingTrack.play()
+                $('.trackTitle').html(currentTrack.title)
+
+                alert('this shit done')
+              },
+              onload: function() {
+                if (this.readyState == 2) {
+                  console.log('fuck')
+
+                  rotation.nextTrack()
+                  currentTrack = rotation.nextTrack()
+                  console.log(currentTrack)
+                  currentPlayingTrack = new Track(currentTrack.soundcloud_id)
+                  currentPlayingTrack.play()
+                  $('.trackTitle').html(currentTrack.title)
+                }
+              }
             });
         };
+
+
+
+
 }
 
  Rotation = function(tracks) {
@@ -160,7 +220,6 @@ $(document).ready(function() {
             method: "GET",
             dataType: 'json'
         }).done(function(response){
-          debugger
         for(var i=0;i<response.playlist.length;i++){
             songs.push({"title": response.playlist[i].title,
                         "song_url": response.playlist[i].song_url,
@@ -168,17 +227,20 @@ $(document).ready(function() {
                       })
             $('.current').append("<p id="+ response.playlist[i].track_id + ">"+response.playlist[i].title+"</p>");
         };
+
+
       })
 
-        var rotation = new Rotation(songs);
-        var currentTrack = rotation.currentTrack();
-        var currentPlayingTrack = new Track(currentTrack.soundcloud_id);
-        debugger
+
+
+         rotation = new Rotation(songs);
+         currentTrack = rotation.currentTrack();
+         currentPlayingTrack = new Track(currentTrack.soundcloud_id);
 
 
         $('#play').on('click', function(event){
             currentPlayingTrack.play();
-            $('.trackTitle').html(currentTrack.title);
+            $('.trackTitle').html(rotation.currentTrack().title);
             $('#pause').show();
             $('#play').hide();
         });
@@ -186,22 +248,27 @@ $(document).ready(function() {
 
         $('#pause').on('click', function(event){
             currentPlayingTrack.pause();
+            //OLD $('.trackTitle').html(currentTrack.title);
+            $('.trackTitle').html(rotation.currentTrack().title);
             $('#pause').hide();
             $('#play').show();
         });
 
         $('#stop').on('click', function(event){
             currentPlayingTrack.stop();
+            $('.trackTitle').html(rotation.currentTrack().title);
             $('#pause').hide();
             $('#play').show();
+            //OLD$('.trackTitle').html(currentTrack.title);
         });
 
           $('#next').on('click', function(event){
             currentPlayingTrack.stop();
+            //OLD$('.trackTitle').html(currentTrack.title);
+            $('.trackTitle').html(rotation.currentTrack().title);
             currentTrack = rotation.nextTrack();
             currentPlayingTrack = new Track(currentTrack.soundcloud_id);
             currentPlayingTrack.play();
-            $('.trackTitle').html(currentTrack.title);
         });
 
 
