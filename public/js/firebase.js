@@ -48,7 +48,12 @@ function firebase() {
 
   var skip = function(){
     if (upSkipVotes2 >= Math.floor(numOfPlayers / 2) + 1){
-      // skip song command
+      currentPlayingTrack.stop();
+      //OLD$('.trackTitle').html(currentTrack.title);
+      $('.trackTitle').html(rotation.currentTrack().title);
+      currentTrack = rotation.nextTrack();
+      currentPlayingTrack = new Track(currentTrack.soundcloud_id);
+      currentPlayingTrack.play();
       console.log("skip the song")
     }
   }
@@ -74,7 +79,7 @@ function firebase() {
 
 // Skip Song //
 
-  $("#up-skip").one("click", function(){
+  $("#up-skip").on("click", function(){
     upSkipVotes1.transaction(function (current_value) {
       return (current_value + 1);
     })
@@ -88,7 +93,7 @@ function firebase() {
 
 // Repeat Song //
 
-  $("#down-skip").one("click", function(){
+  $("#down-skip").on("click", function(){
     downSkipVotes1.transaction(function (current_value) {
       return (current_value + 1);
     })
