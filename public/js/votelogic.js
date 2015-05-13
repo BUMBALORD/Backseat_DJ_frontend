@@ -1,30 +1,30 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
-  setVotes()
+//   setVotes()
 
-  // upSkipVotes.on("value", function(snapshot1) {
-  //   upVotes = snapshot1.val()
-  // })
+//   // upSkipVotes.on("value", function(snapshot1) {
+//   //   upVotes = snapshot1.val()
+//   // })
 
-  // downSkipVotes.on("value", function(snapshot2) {
-  //   downVotes = snapshot2.val()
-  // })
+//   // downSkipVotes.on("value", function(snapshot2) {
+//   //   downVotes = snapshot2.val()
+//   // })
 
-  // totalVotes.on("value", function(snapshot2) {
-  //   votesTotal = snapshot3.val()
-  // })
+//   // totalVotes.on("value", function(snapshot2) {
+//   //   votesTotal = snapshot3.val()
+//   // })
 
-  // totalVotes = upVotes + downVotes
-  // $("#skip-count-total").html(totalVotes)
+//   // totalVotes = upVotes + downVotes
+//   // $("#skip-count-total").html(totalVotes)
 
-  // console.log("controller.js called")
-  // console.log(totalVotes)
-  // console.log(upVotes)
-  // console.log(downVotes)
+//   // console.log("controller.js called")
+//   // console.log(totalVotes)
+//   // console.log(upVotes)
+//   // console.log(downVotes)
 
-  // if (totalVotes === 3){
-  //   console.log("Yay")
-  // }
+//   if (votesTotal1 === 3){
+//     console.log("Yay")
+//   }
 
 
-})
+// })
