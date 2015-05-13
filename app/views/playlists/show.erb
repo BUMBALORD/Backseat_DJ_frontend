@@ -13,11 +13,11 @@
   <input type="submit">
 </form>
 
-<form class="play_songs" action="http://localhost:3000/users/<%=@user%>/playlists/<%=@playlist_id%>" method="GET">
-<input type="submit">
+<form class="play_songs" action="http://localhost:9393/users/<%=@user%>/playlists" method="GET">
+<input type="submit" value="Done">
 </form>
 
-<div class="current" style="float:right; margin:20px">Current Playlist
+<div class="current" style="float:right; margin:20px"><a href="/users/<%= @user %>/playlists/<%= @playlist_id %>/play">Play Playlist</a>
 
   <p></p>
 </div>
