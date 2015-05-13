@@ -1,4 +1,4 @@
-$(document).ready(function() {
+function firebase() {
 
 // var setVotes = function(){
 
@@ -47,7 +47,6 @@ $(document).ready(function() {
 
 
   var skip = function(){
-    console.log("controller logic")
     if (upSkipVotes2 >= Math.floor(numOfPlayers / 2) + 1){
       // skip song command
       console.log("skip the song")
@@ -62,18 +61,20 @@ $(document).ready(function() {
   }
 
   var tie = function(){
-    if(upSkipVotes2 === downSkipVotes2 && totalVotes2 === numOfPlayers){
-      // trigger random song
-      console.log("random song")
-    }
 
-    idleTimer()
+    if (upSkipVotes2 === downSkipVotes2 && totalVotes2 === numOfPlayers){
+      // trigger random song
+      clearTimeout(idleTimer);
+      console.log("random song")
+    } else if (upSkipVotes2 === downSkipVotes2 && upSkipVotes2 != 0){
+      idleTimer()
+    }
 
   }
 
 // Skip Song //
 
-  $("#up-skip").on("click", function(){
+  $("#up-skip").one("click", function(){
     upSkipVotes1.transaction(function (current_value) {
       return (current_value + 1);
     })
@@ -87,7 +88,7 @@ $(document).ready(function() {
 
 // Repeat Song //
 
-  $("#down-skip").on("click", function(){
+  $("#down-skip").one("click", function(){
     downSkipVotes1.transaction(function (current_value) {
       return (current_value + 1);
     })
@@ -100,27 +101,8 @@ $(document).ready(function() {
 
   })
 
-// // Display Skip Song Vote Count //
+}
 
-//   upSkipVotes1.on("value", function(snapshot) {
-//     console.log(snapshot.val());
-//     $("#skip-count-up").html(snapshot.val())
-//   })
-
-// // Display Don't Skip Song Vote Count //
-
-//   downSkipVotes1.on("value", function(snapshot) {
-//     console.log(snapshot.val());
-//     $("#skip-count-down").html(snapshot.val())
-//   })
-
-//   totalVotes1.on("value", function(snapshot) {
-//     console.log(snapshot.val());
-//     $("#skip-count-total").html(snapshot.val())
-//   })
-
-
+$(document).ready(function() {
+  firebase()
 });
-
-
-
