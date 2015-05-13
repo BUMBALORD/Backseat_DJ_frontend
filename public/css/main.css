@@ -126,6 +126,7 @@ nav a:hover {
 
 .main {
     padding: 30px 0;
+    height:100vh;
 }
 
 .main article h1 {
@@ -142,6 +143,23 @@ nav a:hover {
     padding: 20px 0;
 }
 
+.footer-container {
+    position: fixed;
+    bottom: 0px;
+    left:0px;
+    width:100%;
+    background: #666699;
+}
+
+/*.main {
+    height: 100%;
+}
+*/
+/*.main-container {
+    height: 100%;
+}
+*/
+.main
 /* ===============
     ALL: IE Fixes
    =============== */
@@ -157,21 +175,79 @@ nav a:hover {
 
 .font1 { font-family: 'Carter One', cursive; }
 .font2 { font-family: 'Rajdhani', sans-serif; }
-.fontx2 { font-size: 1.4em; }
-
-
+.fontx2 { font-size: 1.8em; }
+.fontxmid { font-size: 2.3em; }
+.fontx3 { font-size: 3.5em; }
+.font_clr { color: #000066; }
+.bold { font-weight: 900;  }
+.shad { text-shadow: 3px 3px 3px #fff; }
 
 .back_img { background-image: url('http://i.imgur.com/mylAsAx.png');
             background-position: 0% 90%;
+            animation: animatedBackground 80s linear infinite;
+            -moz-animation: animatedBackground 80s linear infinite;
+            -webkit-animation: animatedBackground 80s linear infinite;
+            -ms-animation: animatedBackground 80s linear infinite;
+            -o-animation: animatedBackground 80s linear infinite;
 }
 
+.playlist a {
+    transition: text-shadow 0.6s;
+}
+
+.playlist a:hover{
+    text-shadow: 1px 1px yellow;
+}
+
+keyframes animatedBackground {
+  0% { background-position: 0 0; }
+  100% { background-position: -3000px 0; }
+}
+@-moz-keyframes animatedBackground {
+  0% { background-position: 0 0; }
+  100% { background-position: -3000px 0; }
+}
+@-webkit-keyframes animatedBackground {
+  0% { background-position: 0 0; }
+  100% { background-position: -3000px 0; }
+}
+@-ms-keyframes animatedBackground {
+  0% { background-position: 0 0; }
+  100% { background-position: -3000px 0; }
+}
+@-o-keyframes animatedBackground {
+  0% { background-position: 0 0; }
+  100% { background-position: -3000px 0; }
+}
+
+
+.opac { opacity: 0.9 }
 .cent { text-align: center; }
 
+.stroke { color: black;
+          -webkit-text-fill-color: #FFA366; /* Will override color (regardless of order) */
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color: black;
+}
+
+.playlist_name { border: 2px solid #FFA366;
+                 width: 80%;
+                 margin-left: auto;
+                 margin-right: auto;
+                 margin-top: 1.5em;
+                 border-radius: 25px;
+                 box-shadow: 5px 5px 4px 3px rgba(0, 0, 0, 0.2);
+
+}
+
+.box { box-shadow: 5px 5px 4px 3px rgba(0, 0, 0, 0.2); }
+
+a {text-decoration: none}
 
 
-
-
-
+.open { font-family: 'Open Sans', sans-serif; }
+.bang { font-family: 'Bangers', cursive; }
+.play { font-family: 'Play', sans-serif; }
 /* ==========================================================================
    Media Queries
    ========================================================================== */
