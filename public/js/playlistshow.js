@@ -63,8 +63,9 @@ $(document).ready(function(){
 
         this.nextTrack = function () {
           var currentIndex = tracks.indexOf(currentTrack);
+
           var nextTrackIndex = currentIndex + 1;
-          if (nextTrackIndex === $('.playlist').children().length - 1){
+          if (nextTrackIndex === $('.playlist').children().length){
             playlistlength = $('.playlist').children().length
               for(var i=0; i<playlistlength;i++){
                 songs.push({
@@ -73,7 +74,7 @@ $(document).ready(function(){
                 "soundcloud_id":($('.' + i).find('.trackid').text())
                 })
               }
-            rotation = new Rotation(songs)
+            // rotation = new Rotation(songs)
             currentTrack = rotation.currentTrack();
             currentPlayingTrack = new Track(currentTrack.soundcloud_id);
             currentPlayingTrack.play();
@@ -118,10 +119,10 @@ $(document).ready(function(){
   $('#next').on('click', function(event){
       currentPlayingTrack.stop();
       //OLD$('.trackTitle').html(currentTrack.title);
-      $('.trackTitle').html(rotation.currentTrack().title);
       currentTrack = rotation.nextTrack();
       currentPlayingTrack = new Track(currentTrack.soundcloud_id);
       currentPlayingTrack.play();
+      $('.trackTitle').html(rotation.currentTrack().title);
   });
 
 })
