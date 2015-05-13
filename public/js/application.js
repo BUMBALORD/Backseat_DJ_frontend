@@ -78,7 +78,9 @@
 //         };
 //       })
 
+
 $(document).ready(function() {
+  debugger
   Track = function (trackId){
         var currentTrack = "";
         SC.initialize({
@@ -88,8 +90,13 @@ $(document).ready(function() {
         // SC.stream("http://api.soundcloud.com/tracks/" + trackId,
         //   {onfinish: function(){  }}
         //   , function(sound){currentTrack = sound;})
-        SC.stream("http://api.soundcloud.com/tracks/" + trackId, {onfinish: function(){}}, function(sound){currentTrack = sound});
-
+        SC.stream("http://api.soundcloud.com/tracks/" + trackId, {onfinish: function(){
+            currentPlayingTrack.stop();
+            currentTrack = rotation.nextTrack();
+            currentPlayingTrack = new Track(currentTrack.soundcloud_id);
+            currentPlayingTrack.play();
+            $('.trackTitle').html(currentTrack.title);
+        }}, function(sound){currentTrack = sound});
 
         this.pause = function() {
             currentTrack.pause();
@@ -166,7 +173,7 @@ $(document).ready(function() {
         var rotation = new Rotation(songs);
         var currentTrack = rotation.currentTrack();
         var currentPlayingTrack = new Track(currentTrack.soundcloud_id);
-
+        debugger
 
 
         $('#play').on('click', function(event){
