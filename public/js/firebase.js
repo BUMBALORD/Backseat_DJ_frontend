@@ -1,6 +1,5 @@
-function firebase() {
-
-// var setVotes = function(){
+// function firebase() {
+$(document).ready(function() {
 
   var numOfPlayers = 5;
 
@@ -48,12 +47,7 @@ function firebase() {
 
   var skip = function(){
     if (upSkipVotes2 >= Math.floor(numOfPlayers / 2) + 1){
-      currentPlayingTrack.stop();
-      //OLD$('.trackTitle').html(currentTrack.title);
-      $('.trackTitle').html(rotation.currentTrack().title);
-      currentTrack = rotation.nextTrack();
-      currentPlayingTrack = new Track(currentTrack.soundcloud_id);
-      currentPlayingTrack.play();
+      NEXT()
       console.log("skip the song")
     }
   }
@@ -106,8 +100,8 @@ function firebase() {
 
   })
 
-}
+// }
 
-$(document).ready(function() {
-  firebase()
+// $(document).ready(function() {
+//   firebase()
 });
