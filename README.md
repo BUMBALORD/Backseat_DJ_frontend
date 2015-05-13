@@ -1,30 +1,15 @@
-> **Note**: This branch (master) contains a skeleton without any app code, perfect for creating a _new_ application or challenge. If you're looking for an example app built with this skeleton, take a look at the [example](/../..//tree/example) branch which includes basic CRUD and RSpec tests.
+#Backseat DJ Frontend
+###Created by David Hallinan, Brandon Chan, Katie Eaton, Leandra Kim, and Silas Kwong.
 
-### Purpose
-The Sinatra Skeleton:
+Backseat DJ is a mobile app designed to allow the passengers in a car besides shotgun to collaboratively vote on songs to play, songs to skip, and songs to repeat.  This app was created using the SoundCloud API including SoundCloud O-Auth.
 
-1. Provides a foundation for building challenges or creating a new Sinatra application.
-2. Demonstrates a reasonable set of practices around building Sinatra applications.
-3. Eases the transition to Rails for Dev Bootcamp students
+*NOTE: This is the back end version, "Backseat DJ Frontend" is needed to work with this app.*
 
-### Quickstart
+The backend is designed in rails-api with a decoupled architecture with desire to be implimented with a native iOS and Android Framework, or using Ionic framework to bring this app to life.  The backend is designed with a postgresql database for most for the users, playlists, and songs.  The votes is linked with Firebase in order to have multiple users vote simultaneously.
 
-1.  `bundle install`
-2.  `shotgun config.ru`
+The front end consists of a mobile first css library using a Sinatra skeleton framework with desire to be implimented with a native iOS and Android Framework, or using Ionic framework to bring this app to life.
 
-As needed, create models & migrations with the `rake` tasks:
 
-```
-rake generate:migration  # Create an empty migration in db/migrate, e.g., rake generate:migration NAME=create_tasks
-rake generate:model      # Create an empty model in app/models, e.g., rake generate:model NAME=User
-```
+####We are deployed to Heroku so checkout our app.
 
-### Contributing
-
-We would love for you to help make the skeleton more awesome, There are three ways to contribute:
-
-1. Ask for a bug fix or enhancement!
-2. Submit a pull request for a bug fix or enhancement!
-3. Code review an open pull request!
-
-Be prepared to give and receive specific, actionable, and kind feedback!
+This app was created as a final project for DevBootcamp Rock Doves 2015.
