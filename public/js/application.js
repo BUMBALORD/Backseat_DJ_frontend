@@ -5,12 +5,7 @@ $(document).ready(function() {
     method: "GET",
     dataType: 'json'
   }).done(function(response){
-    debugger
     for(var i=0;i<response.playlist.length;i++){
-    // songs.push({"title": response.playlist[i].title,
-    //             "song_url": response.playlist[i].song_url,
-    //             "soundcloud_id": response.playlist[i].track_id.toString()
-    //           })
     $('.current').append("<p id="+ response.playlist[i].track_id + ">"+response.playlist[i].title+"</p>");
     };
   })

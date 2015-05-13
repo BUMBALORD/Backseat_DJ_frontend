@@ -64,6 +64,24 @@ $(document).ready(function(){
         this.nextTrack = function () {
           var currentIndex = tracks.indexOf(currentTrack);
           var nextTrackIndex = currentIndex + 1;
+          if (nextTrackIndex === $('.playlist').children().length - 1){
+            playlistlength = $('.playlist').children().length
+              for(var i=0; i<playlistlength;i++){
+                songs.push({
+                "title":($('.' + i).find('.songlist').text()),
+                "song_url":($('.' + i).find('.songurl').text()),
+                "soundcloud_id":($('.' + i).find('.trackid').text())
+                })
+              }
+            rotation = new Rotation(songs)
+            currentTrack = rotation.currentTrack();
+            currentPlayingTrack = new Track(currentTrack.soundcloud_id);
+            currentPlayingTrack.play();
+            $('.trackTitle').html(rotation.currentTrack().title);
+            $('#pause').show();
+            $('#play').hide();
+          }
+          console.log(nextTrackIndex)
           var nextTrackId = tracks[nextTrackIndex];
           currentTrack = nextTrackId;
           return currentTrack
