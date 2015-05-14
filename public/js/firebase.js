@@ -1,12 +1,15 @@
-function firebase() {
-
-// var setVotes = function(){
+// function firebase() {
+$(document).ready(function() {
 
   var numOfPlayers = 5;
 
   var upSkipVotes1 = new Firebase("https://backseatdj.firebaseIO.com/votes/upSkipVotes");
   var downSkipVotes1 = new Firebase("https://backseatdj.firebaseIO.com/votes/downSkipVotes");
   var totalVotes1 = new Firebase("https://backseatdj.firebaseIO.com/votes/totalVotes");
+  var userId = new Firebase("https://backseatdj.firebaseIO.com/playlist/userId");
+  var playlistId = new Firebase("https://backseatdj.firebaseIO.com/playlist/playlistId");
+  var skipTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/skipTrigger");
+
 
   // Reset Votes //
   console.log("Setting the votes")
@@ -33,6 +36,14 @@ function firebase() {
     $("#skip-count-total").html(snapshot.val())
   })
 
+  userId.on("value", function(snapshot) {
+    userId1 = snapshot.val()
+  })
+
+  playlistId.on("value", function(snapshot) {
+    playlistId1 = snapshot.val()
+  })
+
   var ifEqual = function(){
     if(upSkipVotes2 === downSkipVotes2 && upSkipVotes2 != 0){
       console.log("Time up, random song")
@@ -44,11 +55,21 @@ function firebase() {
     setTimeout(ifEqual, 7000);
   }
 
-
-
   var skip = function(){
     if (upSkipVotes2 >= Math.floor(numOfPlayers / 2) + 1){
-      // skip song command
+      // $.ajax({
+      //   url: '/users/'+ userId1 +'/playlists/'+ playlistId1 +'/play',
+      //   type: "GET",
+      //   processData: false,
+      //   data: "$('#play').trigger('click')"
+      // })
+      // .done(function(response){
+      //   console.log("done")
+      // })
+      // .fail(function(response){
+      //   console.log("fail")
+      // })
+      skipTrigger.set(true)
       console.log("skip the song")
     }
   }
@@ -74,7 +95,7 @@ function firebase() {
 
 // Skip Song //
 
-  $("#up-skip").one("click", function(){
+  $("#up-skip").on("click", function(){
     upSkipVotes1.transaction(function (current_value) {
       return (current_value + 1);
     })
@@ -88,7 +109,7 @@ function firebase() {
 
 // Repeat Song //
 
-  $("#down-skip").one("click", function(){
+  $("#down-skip").on("click", function(){
     downSkipVotes1.transaction(function (current_value) {
       return (current_value + 1);
     })
@@ -101,8 +122,8 @@ function firebase() {
 
   })
 
-}
+// }
 
-$(document).ready(function() {
-  firebase()
+// $(document).ready(function() {
+//   firebase()
 });
