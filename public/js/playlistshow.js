@@ -81,7 +81,7 @@ $(document).ready(function(){
         this.nextTrack = function () {
           var currentIndex = tracks.indexOf(currentTrack);
           var nextTrackIndex = currentIndex + 1;
-          var nextTrackIndex = currentIndex;
+          // var nextTrackIndex = currentIndex;
           if (nextTrackIndex === $('.playlist').children().length){
             playlistlength = $('.playlist').children().length
               for(var i=0; i<playlistlength;i++){
