@@ -244,6 +244,8 @@ keyframes animatedBackground {
 
 a {text-decoration: none}
 
+.bord { border: 7px solid #666699; }
+.marg { margin: 20px; }
 
 .open { font-family: 'Open Sans', sans-serif; }
 .bang { font-family: 'Bangers', cursive; }
