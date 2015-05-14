@@ -1,5 +1,7 @@
 // function firebase() {
 $(document).ready(function() {
+  var firebase = function(){
+
 
   var numOfPlayers = 5;
 
@@ -127,3 +129,13 @@ $(document).ready(function() {
 // $(document).ready(function() {
 //   firebase()
 });
+firebase()
+
+  var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
+
+  resetFirebase.on("value", function(snapshot) {
+  if (snapshot.val() === true){
+      firebase()
+      resetFirebase.set(false)
+    }
+  })
