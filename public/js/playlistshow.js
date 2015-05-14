@@ -81,7 +81,7 @@ $(document).ready(function(){
         this.nextTrack = function () {
           var currentIndex = tracks.indexOf(currentTrack);
           var nextTrackIndex = currentIndex + 1;
-          var nextTrackIndex = currentIndex;
+          // var nextTrackIndex = currentIndex;
           if (nextTrackIndex === $('.playlist').children().length){
             playlistlength = $('.playlist').children().length
               for(var i=0; i<playlistlength;i++){
@@ -159,17 +159,16 @@ $(document).ready(function(){
 
 
 
-  // var skipTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/skipTrigger");
+  var skipTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/skipTrigger");
 
-  // skipTrigger.on("value", function(snapshot) {
-  //   if (snapshot.val() === true){
-  //     $('#next').trigger('click')
-  //     skipTrigger.set(false)
-  //   }
-  // })
+  skipTrigger.on("value", function(snapshot) {
+    if (snapshot.val() === true){
+      $('#next').trigger('click')
+      skipTrigger.set(false)
+    }
+  })
 
 var replayTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/replayTrigger");
-
 
   replayTrigger.on("value", function(snapshot) {
     if (snapshot.val() === true){
