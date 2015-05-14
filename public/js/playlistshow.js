@@ -155,7 +155,11 @@ $(document).ready(function(){
 
 })
 
-
+function reload_js(src) {
+  $('script[src="' + src + '"]').remove();
+  $('<script>').attr('src', src).appendTo('head');
+}
+    reload_js('/js/firebase.js');
 
 
 
@@ -165,6 +169,7 @@ $(document).ready(function(){
     if (snapshot.val() === true){
       $('#next').trigger('click')
       skipTrigger.set(false)
+      reload_js('/js/firebase.js');
     }
   })
 
@@ -174,6 +179,7 @@ var replayTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/rep
     if (snapshot.val() === true){
       $('#repeat').trigger('click')
       replayTrigger.set(false)
+      reload_js('/js/firebase.js');
     }
   })
 
