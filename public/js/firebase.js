@@ -1,9 +1,8 @@
 $(document).ready(function() {
-  var firebase = function(){
+  // var firebase = function(){
 
 
 var firebase = function(){
-
 
   var numOfPlayers = 5;
 
@@ -13,7 +12,7 @@ var firebase = function(){
   var userId = new Firebase("https://backseatdj.firebaseIO.com/playlist/userId");
   var playlistId = new Firebase("https://backseatdj.firebaseIO.com/playlist/playlistId");
   var skipTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/skipTrigger");
-
+  var replayTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/replayTrigger");
 
   // Reset Votes //
   console.log("Setting the votes")
@@ -30,10 +29,9 @@ var firebase = function(){
   skipTrigger.transaction(function (current_value) {
     return (false);
   })
-  // downSkipVotes1.set(0)
-  // upSkipVotes1.set(0)
-  // totalVotes1.set(0)
-  // skipTrigger.set(false)
+  replayTrigger.transaction(function (current_value) {
+    return (false);
+  })
 
   upSkipVotes1.on("value", function(snapshot) {
     upSkipVotes2 = snapshot.val()
@@ -53,14 +51,6 @@ var firebase = function(){
     $("#skip-count-total").html(snapshot.val())
   })
 
-  userId.on("value", function(snapshot) {
-    userId1 = snapshot.val()
-  })
-
-  playlistId.on("value", function(snapshot) {
-    playlistId1 = snapshot.val()
-  })
-
   var ifEqual = function(){
     if(upSkipVotes2 === downSkipVotes2 && upSkipVotes2 != 0){
       console.log("Time up, random song")
@@ -72,6 +62,8 @@ var firebase = function(){
     setTimeout(ifEqual, 7000);
   }
 
+// Controller Logic //
+
   var skip = function(){
     if (upSkipVotes2 >= Math.floor(numOfPlayers / 2) + 1){
       skipTrigger.set(true)
@@ -81,6 +73,7 @@ var firebase = function(){
 
   var repeat = function(){
     if (downSkipVotes2 >= Math.floor(numOfPlayers / 2) + 1){
+      replayTrigger.set(true)
       console.log("repeat the song")
       // replay song command
     }

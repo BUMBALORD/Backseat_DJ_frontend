@@ -1,5 +1,5 @@
 <script>
-    function reload_js('/js/firebase.js') {
+    function reload_js(src) {
         $('script[src="' + src + '"]').remove();
         $('<script>').attr('src', src).appendTo('head');
     }
