@@ -1,6 +1,8 @@
-// function firebase() {
 $(document).ready(function() {
   var firebase = function(){
+
+
+var firebase = function(){
 
 
   var numOfPlayers = 5;
@@ -124,12 +126,9 @@ $(document).ready(function() {
 
   })
 
-// }
+}
 
-// $(document).ready(function() {
-//   firebase()
-});
-firebase()
+  firebase()
 
   var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
 
@@ -139,3 +138,5 @@ firebase()
       resetFirebase.set(false)
     }
   })
+
+});
