@@ -1,3 +1,12 @@
+<script>
+    function reload_js('/js/firebase.js') {
+        $('script[src="' + src + '"]').remove();
+        $('<script>').attr('src', src).appendTo('head');
+    }
+    reload_js('/js/firebase.js');
+</script>
+
+
 <div class="header-container debug">
             <header class="wrapper clearfix debug">
                 <!-- <h1 class="title font1">Backseat DJ</h1> -->

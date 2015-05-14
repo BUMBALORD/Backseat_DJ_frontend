@@ -15,7 +15,7 @@ $(document).ready(function(){
     var currentTrack = "";
 
     SC.initialize({
-        client_id: 'db17be73cc8a86e63b53a69839d67352'
+      client_id: 'db17be73cc8a86e63b53a69839d67352'
     });
 
     SC.stream("http://api.soundcloud.com/tracks/" + trackId, {onfinish: function(){
@@ -37,9 +37,11 @@ $(document).ready(function(){
 
     this.play = function() {
 
-      var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
+      // var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
 
-      resetFirebase.set(true)
+      // resetFirebase.set(true)
+
+      // location.reload();
 
       currentTrack.play({
         onfinish: function(){

@@ -15,10 +15,23 @@ var firebase = function(){
 
   // Reset Votes //
   console.log("Setting the votes")
-  downSkipVotes1.set(0)
-  upSkipVotes1.set(0)
-  totalVotes1.set(0)
-  skipTrigger.set(false)
+
+  upSkipVotes1.transaction(function (current_value) {
+    return (0);
+  })
+  downSkipVotes1.transaction(function (current_value) {
+    return (0);
+  })
+  totalVotes1.transaction(function (current_value) {
+    return (0);
+  })
+  skipTrigger.transaction(function (current_value) {
+    return (false);
+  })
+  // downSkipVotes1.set(0)
+  // upSkipVotes1.set(0)
+  // totalVotes1.set(0)
+  // skipTrigger.set(false)
 
   upSkipVotes1.on("value", function(snapshot) {
     upSkipVotes2 = snapshot.val()
@@ -59,18 +72,6 @@ var firebase = function(){
 
   var skip = function(){
     if (upSkipVotes2 >= Math.floor(numOfPlayers / 2) + 1){
-      // $.ajax({
-      //   url: '/users/'+ userId1 +'/playlists/'+ playlistId1 +'/play',
-      //   type: "GET",
-      //   processData: false,
-      //   data: "$('#play').trigger('click')"
-      // })
-      // .done(function(response){
-      //   console.log("done")
-      // })
-      // .fail(function(response){
-      //   console.log("fail")
-      // })
       skipTrigger.set(true)
       console.log("skip the song")
     }
@@ -128,14 +129,14 @@ var firebase = function(){
 
   firebase()
 
-  var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
+  // var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
 
-  resetFirebase.on("value", function(snapshot) {
-  if (snapshot.val() === true){
-      firebase()
-      resetFirebase.set(false)
-    }
-  })
+  // resetFirebase.on("value", function(snapshot) {
+  // if (snapshot.val() === true){
+  //     firebase()
+  //     resetFirebase.set(false)
+  //   }
+  // })
 
 });
 
