@@ -138,7 +138,7 @@ $(document).ready(function(){
 
 
 
-})
+// })
 
 //   var numOfPlayers = 5;
 
