@@ -146,5 +146,11 @@ $(document).ready(function(){
     }
   })
 
+var replayTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/replayTrigger");
 
-
+  replayTrigger.on("value", function(snapshot) {
+    if (snapshot.val() === true){
+      $('#replay').trigger('click')
+      replayTrigger.set(false)
+    }
+  })
