@@ -21,7 +21,7 @@
               </form>
 
             </div>
-              <h1 class="playlist-index bang stroke fontx3 cent"> <%= @current_user["user_name"] %>'s Playlist</h1>
+              <h1 class="playlist-index bang stroke fontx3 cent"> <%= @current_user["user_name"] %>'s Playlists</h1>
               <% @playlists.each do |playlist| %>
               <div class="playlist_name animate"><p class="font2 fontxmid opac cent"><a href="http://localhost:9393/users/<%= @user %>/playlists/<%= playlist["id"] %>/play"><%= playlist["name"] %></a></p></div>
               <%end%>
