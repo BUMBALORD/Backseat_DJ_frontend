@@ -174,7 +174,7 @@ var replayTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/rep
 
   replayTrigger.on("value", function(snapshot) {
     if (snapshot.val() === true){
-      $('#replay').trigger('click')
+      $('#repeat').trigger('click')
       replayTrigger.set(false)
     }
   })

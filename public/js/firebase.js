@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var firebase = function(){
+  // var firebase = function(){
 
 
 var firebase = function(){
