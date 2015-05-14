@@ -58,16 +58,14 @@ $(document).ready(function(){
         },
         onload: function() {
           if (this.readyState == 2) {
-            firebase()
-            rotation.nextTrack()
+            // firebase()
+            // rotation.nextTrack()
             currentTrack = rotation.nextTrack()
             currentPlayingTrack = new Track(currentTrack.soundcloud_id)
             currentPlayingTrack.play()
             $('.trackTitle').html(currentTrack.title)
           }
         },
-
-
 
       });
     };
@@ -83,6 +81,7 @@ $(document).ready(function(){
         this.nextTrack = function () {
           var currentIndex = tracks.indexOf(currentTrack);
           var nextTrackIndex = currentIndex + 1;
+          var nextTrackIndex = currentIndex;
           if (nextTrackIndex === $('.playlist').children().length){
             playlistlength = $('.playlist').children().length
               for(var i=0; i<playlistlength;i++){
@@ -102,6 +101,7 @@ $(document).ready(function(){
           }
           console.log(nextTrackIndex)
           var nextTrackId = tracks[nextTrackIndex];
+          console.log(nextTrackIndex)
           currentTrack = nextTrackId;
           return currentTrack
         };
@@ -158,16 +158,15 @@ $(document).ready(function(){
 
 
 
-// })
 
-  var skipTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/skipTrigger");
+  // var skipTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/skipTrigger");
 
-  skipTrigger.on("value", function(snapshot) {
-    if (snapshot.val() === true){
-      $('#next').trigger('click')
-      skipTrigger.set(false)
-    }
-  })
+  // skipTrigger.on("value", function(snapshot) {
+  //   if (snapshot.val() === true){
+  //     $('#next').trigger('click')
+  //     skipTrigger.set(false)
+  //   }
+  // })
 
 var replayTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/replayTrigger");
 
