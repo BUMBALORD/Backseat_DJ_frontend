@@ -196,7 +196,11 @@ nav a:hover {
 }
 
 .playlist a:hover{
-    text-shadow: 1px 1px yellow;
+    text-shadow: 1px 1px #FFA366;
+}
+
+.playlist a:visited {
+color: #000066;
 }
 
 keyframes animatedBackground {
