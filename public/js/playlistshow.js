@@ -16,7 +16,7 @@ $(document).ready(function(){
         client_id: 'db17be73cc8a86e63b53a69839d67352'
     });
 
-    SC.stream("http://api.soundcloud.com/tracks/" + trackId, {onfinish: function(){
+    SC.stream("http://api.soundcloud.com/tracks/" + trackId,{onfinish: function(){
       currentPlayingTrack.stop();
       currentTrack = rotation.nextTrack();
       currentPlayingTrack = new Track(currentTrack.soundcloud_id);
@@ -32,6 +32,11 @@ $(document).ready(function(){
     this.stop = function() {
       currentTrack.stop();
     };
+
+    this.repeat = function(){
+      currentTrack.pause()
+      currentTrack.play({onfinish: function(){currentTrack.play()} })
+    }
 
     this.play = function() {
       currentTrack.play({
@@ -50,7 +55,10 @@ $(document).ready(function(){
             currentPlayingTrack.play()
             $('.trackTitle').html(currentTrack.title)
           }
-        }
+        },
+
+
+
       });
     };
 
@@ -123,6 +131,15 @@ $(document).ready(function(){
       currentPlayingTrack = new Track(currentTrack.soundcloud_id);
       currentPlayingTrack.play();
       $('.trackTitle').html(rotation.currentTrack().title);
+  });
+
+  $('#repeat').on('click', function(event){
+      currentPlayingTrack.repeat();
+      $('.trackTitle').html(rotation.currentTrack().title);
+      //OLD$('.trackTitle').html(currentTrack.title);
+      // currentTrack = rotation.nextTrack();
+      // currentPlayingTrack = new Track(currentTrack.soundcloud_id);
+      // currentPlayingTrack.play();
   });
 
 })

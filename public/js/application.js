@@ -32,7 +32,6 @@ $(document).ready(function() {
 
     $('.songs a').on("click", function(event){
       event.preventDefault();
-      debugger
       var song = $(this)
       var track = song.attr('href')
       var artwork_url = song.attr('class')
