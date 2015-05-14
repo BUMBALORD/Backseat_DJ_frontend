@@ -1,5 +1,7 @@
-// function firebase() {
 $(document).ready(function() {
+
+var firebase = function(){
+
 
   var numOfPlayers = 5;
 
@@ -16,6 +18,9 @@ $(document).ready(function() {
   downSkipVotes1.set(0)
   upSkipVotes1.set(0)
   totalVotes1.set(0)
+  skipTrigger.set(false)
+  // resetFirebase.set(false)
+
 
 
   upSkipVotes1.on("value", function(snapshot) {
@@ -122,8 +127,18 @@ $(document).ready(function() {
 
   })
 
-// }
+}
 
-// $(document).ready(function() {
-//   firebase()
+  firebase()
+
+  var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
+
+  resetFirebase.on("value", function(snapshot) {
+  if (snapshot.val() === true){
+      firebase()
+      resetFirebase.set(false)
+    }
+  })
+
 });
+
