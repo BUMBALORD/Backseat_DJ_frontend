@@ -43,11 +43,6 @@ $(document).ready(function(){
 
       currentTrack.play({
         onfinish: function(){
-
-          var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
-
-          resetFirebase.set(true)
-
           $('.trackTitle').html(currentTrack.title);
           currentTrack = rotation.nextTrack()
           currentPlayingTrack = new Track(currentTrack.soundcloud_id)
@@ -137,17 +132,6 @@ $(document).ready(function(){
       currentPlayingTrack.play();
       $('.trackTitle').html(rotation.currentTrack().title);
   });
-
-  NEXT = function(){
-    currentPlayingTrack.stop();
-      //OLD$('.trackTitle').html(currentTrack.title);
-      $('.trackTitle').html(rotation.currentTrack().title);
-      currentTrack = rotation.nextTrack();
-      currentPlayingTrack = new Track(currentTrack.soundcloud_id);
-      currentPlayingTrack.play();
-  }
-
-
 
 })
 
