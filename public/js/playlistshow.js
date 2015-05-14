@@ -9,11 +9,13 @@ $(document).ready(function(){
       })
     }
 
+    // firebase();
+
   Track = function (trackId){
     var currentTrack = "";
 
     SC.initialize({
-        client_id: 'db17be73cc8a86e63b53a69839d67352'
+      client_id: 'db17be73cc8a86e63b53a69839d67352'
     });
 
     SC.stream("http://api.soundcloud.com/tracks/" + trackId,{onfinish: function(){
@@ -39,6 +41,13 @@ $(document).ready(function(){
     }
 
     this.play = function() {
+
+      // var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
+
+      // resetFirebase.set(true)
+
+      // location.reload();
+
       currentTrack.play({
         onfinish: function(){
           $('.trackTitle').html(currentTrack.title);
@@ -49,6 +58,7 @@ $(document).ready(function(){
         },
         onload: function() {
           if (this.readyState == 2) {
+            firebase()
             rotation.nextTrack()
             currentTrack = rotation.nextTrack()
             currentPlayingTrack = new Track(currentTrack.soundcloud_id)
@@ -133,6 +143,7 @@ $(document).ready(function(){
       $('.trackTitle').html(rotation.currentTrack().title);
   });
 
+
   $('#repeat').on('click', function(event){
       currentPlayingTrack.repeat();
       $('.trackTitle').html(rotation.currentTrack().title);
@@ -143,3 +154,21 @@ $(document).ready(function(){
   });
 
 })
+
+
+
+
+// })
+
+  var skipTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/skipTrigger");
+
+  skipTrigger.on("value", function(snapshot) {
+    if (snapshot.val() === true){
+      $('#next').trigger('click')
+      skipTrigger.set(false)
+    }
+  })
+
+
+
+
