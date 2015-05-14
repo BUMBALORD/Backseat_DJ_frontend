@@ -171,7 +171,7 @@ nav a:hover {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-.debug { border: 1px solid red; }
+.debug { border: 0px solid red; }
 
 .font1 { font-family: 'Carter One', cursive; }
 .font2 { font-family: 'Rajdhani', sans-serif; }
