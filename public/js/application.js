@@ -23,7 +23,7 @@ $(document).ready(function() {
       dataType: 'json'
     }).done(function(response){
       for(var i=0; i<response.length; i++){
-        console.log(response[i].artwork_url)
+        // console.log(response[i].artwork_url)
         // $('.playlist').append( "<p class='songs' id=" + response[i].stream_url + "><a href=" + response[i].id + ">" +  response[i].title + "</a></p>")
         $('.playlist').append( "<p class='songs' id=" + response[i].stream_url + "><a class="+response[i].artwork_url+" href=" + response[i].id + ">" +  response[i].title + "</a></p>")
       }

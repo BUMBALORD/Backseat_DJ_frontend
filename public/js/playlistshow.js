@@ -59,7 +59,7 @@ $(document).ready(function(){
         onload: function() {
           if (this.readyState == 2) {
             // firebase()
-            rotation.nextTrack()
+            // rotation.nextTrack()
             currentTrack = rotation.nextTrack()
             currentPlayingTrack = new Track(currentTrack.soundcloud_id)
             currentPlayingTrack.play()
@@ -81,6 +81,7 @@ $(document).ready(function(){
         this.nextTrack = function () {
           var currentIndex = tracks.indexOf(currentTrack);
           var nextTrackIndex = currentIndex + 1;
+          var nextTrackIndex = currentIndex;
           if (nextTrackIndex === $('.playlist').children().length){
             playlistlength = $('.playlist').children().length
               for(var i=0; i<playlistlength;i++){
