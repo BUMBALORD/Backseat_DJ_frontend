@@ -16,7 +16,7 @@ $(document).ready(function() {
   downSkipVotes1.set(0)
   upSkipVotes1.set(0)
   totalVotes1.set(0)
-
+  skipTrigger.set(false)
 
   upSkipVotes1.on("value", function(snapshot) {
     upSkipVotes2 = snapshot.val()
