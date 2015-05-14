@@ -9,6 +9,8 @@ $(document).ready(function(){
       })
     }
 
+    // firebase();
+
   Track = function (trackId){
     var currentTrack = "";
 
@@ -44,6 +46,7 @@ $(document).ready(function(){
         },
         onload: function() {
           if (this.readyState == 2) {
+            firebase()
             rotation.nextTrack()
             currentTrack = rotation.nextTrack()
             currentPlayingTrack = new Track(currentTrack.soundcloud_id)
@@ -125,4 +128,25 @@ $(document).ready(function(){
       $('.trackTitle').html(rotation.currentTrack().title);
   });
 
+  NEXT = function(){
+    currentPlayingTrack.stop();
+      //OLD$('.trackTitle').html(currentTrack.title);
+      $('.trackTitle').html(rotation.currentTrack().title);
+      currentTrack = rotation.nextTrack();
+      currentPlayingTrack = new Track(currentTrack.soundcloud_id);
+      currentPlayingTrack.play();
+  }
+
+
+
 })
+
+  var skipTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/skipTrigger");
+
+  skipTrigger.on("value", function(snapshot) {
+    $('#next').trigger('click')
+    skipTrigger.set(false)
+  })
+
+
+
