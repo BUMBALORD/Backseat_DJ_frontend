@@ -176,6 +176,7 @@ nav a:hover {
 .font1 { font-family: 'Carter One', cursive; }
 .font2 { font-family: 'Rajdhani', sans-serif; }
 .fontx2 { font-size: 1.8em; }
+.font1X5 { font-size: 1.3em; }
 .fontxmid { font-size: 2.3em; }
 .fontx3 { font-size: 3.5em; }
 .font_clr { color: #000066; }
@@ -196,7 +197,7 @@ nav a:hover {
 }
 
 .playlist a:hover{
-    text-shadow: 1px 1px yellow;
+    text-shadow: 2px 2px #FFA366;
 }
 
 keyframes animatedBackground {
@@ -240,9 +241,15 @@ keyframes animatedBackground {
 
 }
 
+.bord { border: 10px solid #666699; }
+
+.marg { margin: 25px; }
+
 .box { box-shadow: 5px 5px 4px 3px rgba(0, 0, 0, 0.2); }
 
-a {text-decoration: none}
+a {text-decoration: none;
+   background-color: none;
+}
 
 
 .open { font-family: 'Open Sans', sans-serif; }

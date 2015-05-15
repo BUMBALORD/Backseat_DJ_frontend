@@ -155,7 +155,11 @@ $(document).ready(function(){
 
 })
 
-
+function reload_js(src) {
+  $('script[src="' + src + '"]').remove();
+  $('<script>').attr('src', src).appendTo('head');
+}
+    reload_js('/js/firebase.js');
 
 
 
@@ -165,5 +169,24 @@ $(document).ready(function(){
     if (snapshot.val() === true){
       $('#next').trigger('click')
       skipTrigger.set(false)
+      reload_js('/js/firebase.js');
     }
   })
+
+var replayTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/replayTrigger");
+
+  replayTrigger.on("value", function(snapshot) {
+    if (snapshot.val() === true){
+      $('#repeat').trigger('click')
+      replayTrigger.set(false)
+      reload_js('/js/firebase.js');
+    }
+  })
+// >>>>>>> 4b3f8de2f8e54babec2b52ffcc588d6a720dfef0
+
+//   skipTrigger.on("value", function(snapshot) {
+//     if (snapshot.val() === true){
+//       $('#next').trigger('click')
+//       skipTrigger.set(false)
+//     }
+  // })
