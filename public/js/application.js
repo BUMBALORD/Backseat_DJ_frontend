@@ -52,12 +52,12 @@ $(document).ready(function() {
                   song_url: stream_url,
                   user_id: userid }
         }).done(function(response) {
-      debugger
           $('.current').append("<p>" + response.title + "</p>")
         })
       })
     })  // search bar
  }) // .done
+
 
     // rotation = new Rotation(songs);
     // currentTrack = rotation.currentTrack();
