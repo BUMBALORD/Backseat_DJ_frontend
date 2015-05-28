@@ -59,9 +59,6 @@ $(document).ready(function() {
     })  // search bar
  }) // .done
 
-    // rotation = new Rotation(songs);
-    // currentTrack = rotation.currentTrack();
-    // currentPlayingTrack = new Track(currentTrack.soundcloud_id);
 });  // document
 
 

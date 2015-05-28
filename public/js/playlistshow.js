@@ -1,15 +1,39 @@
 $(document).ready(function(){
-  songs = []
-  playlistlength = $('.playlist').children().length
-    for(var i=0; i<playlistlength;i++){
-      songs.push({
-      "title":($('.' + i).find('.songlist').text()),
-      "song_url":($('.' + i).find('.songurl').text()),
-      "soundcloud_id":($('.' + i).find('.trackid').text())
+//******************************ORIGINAL
+  // playlistSongs = []
+  // playlistlength = $('.playlist').children().length
+  //   for(var i=0; i<playlistlength;i++){
+  //     playlistSongs.push({
+  //     "title":($('.' + i).find('.songlist').text()),
+  //     "song_url":($('.' + i).find('.songurl').text()),
+  //     "soundcloud_id":($('.' + i).find('.trackid').text())
+  //     })
+  //   }
+
+//**************************************
+    playlistSongs = []
+    var bac = window.location.pathname
+    var playlid = bac.match('/.*/(.*).*/')[1]
+    var user_id = bac.match(/\/users\/(\d+)/)[1]
+    fale=[]
+
+
+    $.ajax({
+      url:"http://localhost:3000/users/"+user_id+ "/playlists/"+playlid+"/play",
+      type:'GET',
+      data:$(this).serialize(),
+      async:false
+    }).done(function(response){
+      for(var i=0; i<response.length; i++){
+      playlistSongs.push({
+        "title":response[i].title,
+        "song_url": response[i].song_url,
+        "soundcloud_id": response[i].track_id.toString()
       })
     }
 
-    // firebase();
+    })
+
 
   Track = function (trackId){
     var currentTrack = "";
@@ -42,9 +66,9 @@ $(document).ready(function(){
 
     this.play = function() {
 
-      var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
+      // var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
 
-      resetFirebase.set(true)
+      // resetFirebase.set(true)
 
       // location.reload();
 
@@ -79,35 +103,39 @@ $(document).ready(function(){
         };
 
         this.nextTrack = function () {
+          debugger
           var currentIndex = tracks.indexOf(currentTrack);
           var nextTrackIndex = currentIndex + 1;
           // var nextTrackIndex = currentIndex;
           if (nextTrackIndex === $('.playlist').children().length){
+                  //ORIGINAL NOT +1
+          // if (nextTrackIndex === $('.playlist').children().length + 1){
             playlistlength = $('.playlist').children().length
               for(var i=0; i<playlistlength;i++){
-                songs.push({
+                playlistSongs.push({
                 "title":($('.' + i).find('.songlist').text()),
                 "song_url":($('.' + i).find('.songurl').text()),
                 "soundcloud_id":($('.' + i).find('.trackid').text())
                 })
               }
-            // rotation = new Rotation(songs)
+            rotation = new Rotation(playlistSongs)
             currentTrack = rotation.currentTrack();
             currentPlayingTrack = new Track(currentTrack.soundcloud_id);
             currentPlayingTrack.play();
             $('.trackTitle').html(rotation.currentTrack().title);
             $('#pause').show();
             $('#play').hide();
-          }
+          } else {
           console.log(nextTrackIndex)
           var nextTrackId = tracks[nextTrackIndex];
           console.log(nextTrackIndex)
           currentTrack = nextTrackId;
           return currentTrack
+          }
         };
   }; //Rotation end
 
-  rotation = new Rotation(songs);
+  rotation = new Rotation(playlistSongs);
   currentTrack = rotation.currentTrack();
   currentPlayingTrack = new Track(currentTrack.soundcloud_id);
 
@@ -173,7 +201,7 @@ function reload_js(src) {
     }
   })
 
-var replayTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/replayTrigger");
+  var replayTrigger = new Firebase("https://backseatdj.firebaseIO.com/triggers/replayTrigger");
 
   replayTrigger.on("value", function(snapshot) {
     if (snapshot.val() === true){
