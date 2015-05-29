@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+
 //******************************ORIGINAL
   // playlistSongs = []
   // playlistlength = $('.playlist').children().length
@@ -50,6 +52,7 @@ $(document).ready(function(){
     // ***BETA SOUND FUNCTION TESTING**//
     this.volume = function(num){
       if (num >= 0 && num <= 100){
+
       currentTrack.setVolume(num)
       } else {
         currentTrack.setVolume(100)
@@ -214,6 +217,17 @@ $(document).ready(function(){
       // currentPlayingTrack.play();
   });
 
+  // $('#vollume').on('change',function(event){
+  //   currentPlayingTrack.volume($('#range')[0].innerHTML)
+  //   console.log($('#range')[0].innerHTML)
+  // })
+
+  $('#volume').change(function(event){
+    currentPlayingTrack.volume($('#range')[0].innerHTML)
+    console.log($('#range')[0].innerHTML)
+  })
+
+
 })
 
 function reload_js(src) {
@@ -243,7 +257,7 @@ function reload_js(src) {
       reload_js('/js/firebase.js');
     }
   })
-// >>>>>>> 4b3f8de2f8e54babec2b52ffcc588d6a720dfef0
+
 
 //   skipTrigger.on("value", function(snapshot) {
 //     if (snapshot.val() === true){

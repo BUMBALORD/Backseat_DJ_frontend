@@ -17,6 +17,14 @@
                   <button id="stop">Stop</button>
                   <button id="next">Next</button>
                   <button id="repeat">Repeat</button>
+                  <input type="range" id="volume" min="0" max="100" value="50" onchange="showValue(this.value)" />
+                  <span id="range">50</span>
+                  <script type="text/javascript">
+                    function showValue(newValue)
+                      {
+                        document.getElementById("range").innerHTML=newValue;
+                      }
+                  </script>
               </div>
 
 
