@@ -10,7 +10,7 @@
             <div class="main wrapper clearfix debug">
 
 
-              <div class="player cent">
+              <div class="player">
                 <h4 class="trackTitle">Current track</h4>
                   <button id="play">Play</button>
                   <button id="pause" style="display:none;">Pause</button>
@@ -19,12 +19,6 @@
                   <button id="repeat">Repeat</button>
                   <input type="range" id="volume" min="0" max="100" value="50" onchange="showValue(this.value)" />
                   <span id="range">50</span>
-                  <script type="text/javascript">
-                    function showValue(newValue)
-                      {
-                        document.getElementById("range").innerHTML=newValue;
-                      }
-                  </script>
               </div>
 
 
@@ -43,7 +37,7 @@
                     <div class="info">
                       <% @rep.each_with_index do |rep ,i| %>
                         <div class="nothere animate">
-                          <p class="font2 fontx2 opac cent"><a href="/songs/<%= rep["id"] %>"><%= rep["title"] %></a></p>
+                          <p class="font2 fontx1.5 opac"><a href="/songs/<%= rep["id"] %>"><%= rep["title"] %></a></p>
                         </div>
                       <%end%>
                     </div>

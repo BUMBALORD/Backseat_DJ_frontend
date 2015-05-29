@@ -1,8 +1,6 @@
 $(document).ready(function() {
 
 
-
-
   songs=[]
   $.ajax({
     url: "http://localhost:3000" + window.location.pathname + "/edit",

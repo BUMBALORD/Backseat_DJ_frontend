@@ -225,6 +225,7 @@ keyframes animatedBackground {
 .opac { opacity: 0.9 }
 .cent { text-align: center; }
 
+
 .stroke { color: black;
           -webkit-text-fill-color: #FFA366; /* Will override color (regardless of order) */
           -webkit-text-stroke-width: 1px;

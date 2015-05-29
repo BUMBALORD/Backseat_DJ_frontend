@@ -32,6 +32,10 @@ $(document).ready(function(){
       }
     })
 
+  showValue = function(newValue){
+    document.getElementById("range").innerHTML=newValue;
+  }
+
   Track = function (trackId){
     var currentTrack = "";
 
@@ -141,7 +145,6 @@ $(document).ready(function(){
         this.nextTrack = function () {
           var currentIndex = tracks.indexOf(currentTrack);
           var nextTrackIndex = currentIndex + 1;
-          debugger
           // var nextTrackIndex = currentIndex;
           if (nextTrackIndex === $('.playlist').children().length){
                   //ORIGINAL WAS NOT +1
