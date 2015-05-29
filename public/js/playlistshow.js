@@ -15,9 +15,6 @@ $(document).ready(function(){
     var bac = window.location.pathname
     var playlid = bac.match('/.*/(.*).*/')[1]
     var user_id = bac.match(/\/users\/(\d+)/)[1]
-    fale=[]
-
-
     $.ajax({
       url:"http://localhost:3000/users/"+user_id+ "/playlists/"+playlid+"/play",
       type:'GET',
@@ -25,15 +22,13 @@ $(document).ready(function(){
       async:false
     }).done(function(response){
       for(var i=0; i<response.length; i++){
-      playlistSongs.push({
-        "title":response[i].title,
-        "song_url": response[i].song_url,
-        "soundcloud_id": response[i].track_id.toString()
-      })
-    }
-
+        playlistSongs.push({
+          "title":response[i].title,
+          "song_url": response[i].song_url,
+          "soundcloud_id": response[i].track_id.toString()
+        })
+      }
     })
-
 
   Track = function (trackId){
     var currentTrack = "";
@@ -51,9 +46,30 @@ $(document).ready(function(){
       }
     }, function(sound){currentTrack = sound});
 
+
+    // ***BETA SOUND FUNCTION TESTING**//
+    this.volume = function(num){
+      if (num >= 0 && num <= 100){
+      currentTrack.setVolume(num)
+      } else {
+        currentTrack.setVolume(100)
+      }
+    }
+
+    this.mute = function(){
+      currentTrack.mute();
+    }
+
+    this.unmute = function(){
+      currentTrack.unmute();
+    }
+
     this.pause = function() {
       currentTrack.pause();
     };
+
+    // ***BETA SOUND FUNCTION TESTING**//
+
 
     this.stop = function() {
       currentTrack.stop();
@@ -67,11 +83,8 @@ $(document).ready(function(){
     this.play = function() {
 
       // var resetFirebase = new Firebase("https://backseatdj.firebaseIO.com/triggers/resetFirebase");
-
       // resetFirebase.set(true)
-
       // location.reload();
-
       currentTrack.play({
         onfinish: function(){
             firebase()
@@ -90,7 +103,6 @@ $(document).ready(function(){
             $('.trackTitle').html(currentTrack.title)
           }
         },
-
       });
     };
 
@@ -102,13 +114,34 @@ $(document).ready(function(){
           return currentTrack;
         };
 
+        //***** REPEAT FUNCTION ********
+        // this.lastTrack = function(){
+        // var currentIndex = tracks.indexOf(currentTrack);
+        // var lastTrackIndex = currentIndex - 1
+        // if (lastTrackIndex < 0){
+        //     var lastTrackId = tracks[tracks.length];
+        //     console.log(lastTrackIndex)
+        //     currentTrack = lastTrackId;
+        //     return currentTrack
+        // }else{
+        //     var lastTrackId = tracks[lastTrackIndex];
+        //     console.log(lastTrackIndex)
+        //     currentTrack = lastTrackId;
+        //     return currentTrack
+        //     }
+        // }
+
+        //***** REPEAT FUNCTION END********
+
+
+
         this.nextTrack = function () {
-          debugger
           var currentIndex = tracks.indexOf(currentTrack);
           var nextTrackIndex = currentIndex + 1;
+          debugger
           // var nextTrackIndex = currentIndex;
           if (nextTrackIndex === $('.playlist').children().length){
-                  //ORIGINAL NOT +1
+                  //ORIGINAL WAS NOT +1
           // if (nextTrackIndex === $('.playlist').children().length + 1){
             playlistlength = $('.playlist').children().length
               for(var i=0; i<playlistlength;i++){
@@ -126,11 +159,11 @@ $(document).ready(function(){
             $('#pause').show();
             $('#play').hide();
           } else {
-          console.log(nextTrackIndex)
-          var nextTrackId = tracks[nextTrackIndex];
-          console.log(nextTrackIndex)
-          currentTrack = nextTrackId;
-          return currentTrack
+                console.log(nextTrackIndex)
+                var nextTrackId = tracks[nextTrackIndex];
+                console.log(nextTrackIndex)
+                currentTrack = nextTrackId;
+                return currentTrack
           }
         };
   }; //Rotation end
