@@ -1,4 +1,7 @@
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
+*{
+    border: solid red 1px;
+}
 
 html {
     color: #222;
@@ -68,6 +71,9 @@ body {
 /* ===================
     ALL: Orange Theme
    =================== */
+.main-container{
+    width:100%;
+}
 
 .header-container {
     border-bottom: 20px solid #666699;

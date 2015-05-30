@@ -27,7 +27,8 @@ $(document).ready(function(){
         playlistSongs.push({
           "title":response[i].title,
           "song_url": response[i].song_url,
-          "soundcloud_id": response[i].track_id.toString()
+          "soundcloud_id": response[i].track_id.toString(),
+          "artwork_url":response[i].artwork_url
         })
       }
     })
@@ -116,8 +117,11 @@ $(document).ready(function(){
   } //Track end
 
   Rotation = function(tracks) {
+
         var currentTrack = tracks[0];
         this.currentTrack = function () {
+          // $('.player').find
+          $('.current_picture').attr('src', currentTrack.artwork_url)
           return currentTrack;
         };
 
@@ -172,6 +176,7 @@ $(document).ready(function(){
                 return currentTrack
           }
         };
+
   }; //Rotation end
 
   rotation = new Rotation(playlistSongs);
