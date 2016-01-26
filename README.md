@@ -10,6 +10,10 @@ The backend is designed in rails-api with a decoupled architecture with desire t
 The front end consists of a mobile first css library using a Sinatra skeleton framework with desire to be implimented with a native iOS and Android Framework, or using Ionic framework to bring this app to life.
 
 
-####We are deployed to Heroku so checkout our app.
+####We are deployed to Heroku so checkout our app at:
+
+http://backseat-dj-frontend.herokuapp.com/
+
+(The back end is not actually sending JSON data now, as we had to take it down, but you can see the design of the site still)
 
 This app was created as a final project for DevBootcamp Rock Doves 2015.
